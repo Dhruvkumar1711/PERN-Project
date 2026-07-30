@@ -7,6 +7,18 @@ const app = express()
 
 initDatabase();
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
+    }
+
+    next();
+});
+
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
@@ -66,10 +78,10 @@ app.post("/users", async (req, res)=>{
         });
     }
     catch (error){
-        return res.send(500).json({
+        return res.status(500).json({
          status: "failure",
          message: "User Cannot be created",
-         error: error
+         error: error.message
       })
    
     }
