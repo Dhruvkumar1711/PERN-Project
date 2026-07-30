@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 const RegistrationForm = () => {
+
+    // ai used from here***
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
     const [name, setName] = useState('');
@@ -45,6 +47,7 @@ const RegistrationForm = () => {
             alert('Error connecting to backend: ' + error.message);
         }
     };
+    //upto here **
 
   return (
     <div>

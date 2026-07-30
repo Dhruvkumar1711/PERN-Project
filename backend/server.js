@@ -1,3 +1,5 @@
+// if you see "**" it means i used ai at that peice of code, i learned new things .
+
 const express = require('express')
 const {log} =require('node:console')
 require('dotenv').config()
@@ -7,6 +9,7 @@ const app = express()
 
 initDatabase();
 
+// **
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -18,6 +21,7 @@ app.use((req, res, next) => {
 
     next();
 });
+// upto this of ai use **
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
@@ -139,7 +143,8 @@ app.patch('/profile' , async (req,res)=>{
       WHERE email = $1 AND password = $2;
    `
 
-    try {
+    try { 
+        //**
       const findResult = await db.query(findUserQuery, [email, password])
       const currentUser = findResult.rows[0]
 
@@ -149,10 +154,11 @@ app.patch('/profile' , async (req,res)=>{
             message: "Invalid Email or Password"
          })
       }
-
+       
         const updatedEmail = newEmail ? newEmail : currentUser.email
         const updatedPassword = newPassword ? newPassword : currentUser.password
         const updatedAge = newAge ? newAge : currentUser.age
+        // upto this **
 
         const updateProfileQuery = `
             UPDATE users
