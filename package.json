@@ -1,0 +1,28 @@
+{
+  "name": "cohort-dhruv-25e111a90",
+  "version": "1.0.0",
+  "description": "\"# Cohort-Dhruv-25E111A90\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhruvkumar1711/Cohort-Dhruv-25E111A90.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Dhruvkumar1711/Cohort-Dhruv-25E111A90/issues"
+  },
+  "homepage": "https://github.com/Dhruvkumar1711/Cohort-Dhruv-25E111A90#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "pg": "^8.22.0"
+  }
+}
