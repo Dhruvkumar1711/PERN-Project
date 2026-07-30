@@ -161,6 +161,33 @@ app.patch('/profile' , async (req,res)=>{
     }
 })
 
+app.delete('/profile' , async (req, res)=>{
+    const {name} = req.body;
+
+    const delUsersQuery = ` 
+      DELETE FROM users
+      WHERE name = $1  
+      RETURNING id, name, email;
+   `
+   try{
+      const result = await db.query(delUsersQuery,[name])
+      res.status(201).json(
+         {
+            status : "Success",
+            message: "Users deleted",
+            data: result.rows[0]
+         }
+      )
+   }
+   catch (error) {
+      return res.status(500).json({
+         status: "failure",
+         message: "User cannot be deleted",
+         error: error.message
+      })
+   }
+})
+
 
 app.listen(PORT,(err)=>{
    if (err) {
