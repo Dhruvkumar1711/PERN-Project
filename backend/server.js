@@ -78,12 +78,19 @@ app.post("/users", async (req, res)=>{
         });
     }
     catch (error){
+        if (error?.code === '23505') {
+            return res.status(409).json({
+                status: "Failed",
+                message: "A user with this registration number or email already exists.",
+                error: error.message
+            });
+        }
+
         return res.status(500).json({
-         status: "failure",
-         message: "User Cannot be created",
-         error: error.message
-      })
-   
+            status: "failure",
+            message: "User Cannot be created",
+            error: error.message
+        });
     }
 })
 
@@ -201,7 +208,7 @@ app.delete('/profile' , async (req, res)=>{
 })
 
 
-app.listen(PORT,(err)=>{
+app.listen(PORT, (err)=>{
    if (err) {
         console.log(err)
     }

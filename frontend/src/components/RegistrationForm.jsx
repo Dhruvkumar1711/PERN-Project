@@ -39,7 +39,7 @@ const RegistrationForm = () => {
                 setPassword('');
                 setAge('');
             } else {
-                alert(result.message || 'Registration Failed!');
+                alert(result.error || result.message || 'Registration Failed!');
             }
         } catch (error) {
             alert('Error connecting to backend: ' + error.message);
